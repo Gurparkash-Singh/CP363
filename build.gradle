@@ -23,5 +23,5 @@ repositories
 dependencies 
 {
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.32'
-    // runtimeClasspath group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.32'
+    implementation 'org.apache.ibatis:ibatis-core:3.0'
 }
