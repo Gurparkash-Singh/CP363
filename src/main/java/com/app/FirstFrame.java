@@ -101,7 +101,7 @@ public class FirstFrame extends JFrame implements ActionListener{
 
             Reader reader = new BufferedReader(
                 new FileReader(
-                    "/Users/gurparkashrandhawa/Documents/github/CP363/sql/" + name + ".sql"
+                    "./sql/" + name + ".sql"
                 )
             );
 
