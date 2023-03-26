@@ -1,8 +1,6 @@
 package com.app;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,7 +9,8 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class FirstFrame extends JFrame implements ActionListener{
+public class FirstFrame extends JFrame
+{
 
     JButton create = new JButton();
     JButton delete = new JButton();
@@ -45,15 +44,15 @@ public class FirstFrame extends JFrame implements ActionListener{
     {
         this.create.setBounds(200, 100, 100, 50);
         this.create.setText("Create Tables");
-        this.create.addActionListener(this);
+        this.create.addActionListener(e -> {scriptSetup("create");});
 
         this.delete.setBounds(200, 200, 100, 50);
         this.delete.setText("Delete Tables");
-        this.delete.addActionListener(this);
+        this.delete.addActionListener(e -> {scriptSetup("delete");});
 
         this.populate.setBounds(200, 300, 100, 50);
         this.populate.setText("Populate Tables");
-        this.populate.addActionListener(this);
+        this.populate.addActionListener(e -> {scriptSetup("populate");});
 
         this.query.setBounds(200, 400, 100, 50);
         this.query.setText("Query Tables");
@@ -61,27 +60,7 @@ public class FirstFrame extends JFrame implements ActionListener{
 
         this.exit.setBounds(200, 500, 100, 50);
         this.exit.setText("Exit");
-        this.exit.addActionListener(this);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == exit)
-        {
-            System.exit(0);
-        }
-        else if (e.getSource() == create)
-        {
-            scriptSetup("create");
-        }
-        else if (e.getSource() == delete)
-        {
-            scriptSetup("delete");
-        }
-        else if (e.getSource() == populate)
-        {
-            scriptSetup("populate");
-        }
+        this.exit.addActionListener(e -> {System.exit(0);});
     }
 
     private void scriptSetup(String name)
@@ -99,8 +78,10 @@ public class FirstFrame extends JFrame implements ActionListener{
 
             ScriptRunner sr = new ScriptRunner(con);
 
-            Reader reader = new BufferedReader(
-                new FileReader(
+            Reader reader = new BufferedReader
+            (
+                new FileReader
+                (
                     "./sql/" + name + ".sql"
                 )
             );

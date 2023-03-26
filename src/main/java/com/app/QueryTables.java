@@ -4,10 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class QueryTables implements ActionListener{
+public class QueryTables implements ActionListener
+{
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) 
+    {
         try
         {
             Connection con = DriverManager.getConnection
@@ -23,7 +25,8 @@ public class QueryTables implements ActionListener{
 
             while(rs.next())
             {
-                System.out.println(
+                System.out.println
+                (
                     rs.getString(1)
                     + "  "
                     + rs.getDate(2)
