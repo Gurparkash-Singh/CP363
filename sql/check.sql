@@ -1,1 +1,0 @@
-SELECT * FROM `TABLES` WHERE TABLE_NAME = "table_name";

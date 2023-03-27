@@ -1,46 +1,48 @@
 package com.app;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class QueryTables implements ActionListener
+public class QueryTables
 {
 
-    @Override
-    public void actionPerformed(ActionEvent e) 
+    public static void queryRunner(String query)
     {
         try
         {
             Connection con = DriverManager.getConnection
             (  
-                "jdbc:mysql://sql350.main-hosting.eu/u581004658_Store",
-                "u581004658_CP363",
-                "CP363Group36"
+                "jdbc:mysql://sql350.main-hosting.eu/u581004658_Group43",
+                "u581004658_Group43",
+                "CP363Group46"
             );
 
-            Statement stmt = con.createStatement();  
+            System.out.println("Connection Established");
 
-            ResultSet rs = stmt.executeQuery("select * from Movies");  
+            Statement stmt = con.createStatement();
 
-            while(rs.next())
+            ResultSet rs = stmt.executeQuery(query);
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            int count = rsmd.getColumnCount();
+
+            // System.out.println(count);
+
+            while (rs.next())
             {
-                System.out.println
-                (
-                    rs.getString(1)
-                    + "  "
-                    + rs.getDate(2)
-                    + "  "
-                    + rs.getString(3)
-                );
+                for (int i = 1; i <= count; i++)
+                {
+                    System.out.print(rs.getString(i) + " | ");
+                }
+                System.out.println();
             }
 
-            con.close();  
+            con.close();
         }
         catch(Exception except)
         { 
             System.out.println(except);
-        } 
+        }
     }
     
 }

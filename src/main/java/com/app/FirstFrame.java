@@ -1,13 +1,11 @@
 package com.app;
 
-import java.awt.Color;
-import java.io.Reader;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.awt.*;
+import java.io.*;
 import java.sql.*;
+import javax.swing.*;
 import org.apache.ibatis.jdbc.ScriptRunner;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+
 
 public class FirstFrame extends JFrame
 {
@@ -17,54 +15,90 @@ public class FirstFrame extends JFrame
     JButton populate = new JButton();
     JButton query = new JButton();
     JButton exit = new JButton();
+    JLabel emptyLabels[] = new JLabel[10];
 
     public FirstFrame()
     {
         initFrame();
         initButtons();
+        for (int i = 0; i < 10; i++)
+        {
+            JLabel emptyLabel = new JLabel();
+            emptyLabel.setPreferredSize(new Dimension(10, 10));
+            emptyLabels[i] = emptyLabel;
+        }
+        this.add(emptyLabels[0]);
         this.add(create);
+        this.add(emptyLabels[1]);
+
+        this.add(emptyLabels[2]);
         this.add(delete);
+        this.add(emptyLabels[3]);
+
+        this.add(emptyLabels[4]);
         this.add(populate);
+        this.add(emptyLabels[5]);
+
+        this.add(emptyLabels[6]);
         this.add(query);
+        this.add(emptyLabels[7]);
+
+        this.add(emptyLabels[8]);
         this.add(exit);
+        this.add(emptyLabels[9]);
     }
 
     private void initFrame()
     {
-        this.setTitle("Title!");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(900, 900);
+        this.setSize(500, 500);
         this.setResizable(true);
-        this.setVisible(true);
-        this.setLayout(null);
+        this.setLayout(new GridLayout(5,3,10,10));
         this.getContentPane().setBackground(new Color(0x7B32FA));
     }
 
     private void initButtons()
     {
-        this.create.setBounds(200, 100, 100, 50);
+        this.create.setBounds(20, 100, 100, 50);
         this.create.setText("Create Tables");
         this.create.addActionListener(e -> {scriptSetup("create");});
 
-        this.delete.setBounds(200, 200, 100, 50);
+        this.delete.setBounds(20, 200, 100, 50);
         this.delete.setText("Delete Tables");
         this.delete.addActionListener(e -> {scriptSetup("delete");});
 
-        this.populate.setBounds(200, 300, 100, 50);
+        this.populate.setBounds(20, 300, 100, 50);
         this.populate.setText("Populate Tables");
         this.populate.addActionListener(e -> {scriptSetup("populate");});
 
-        this.query.setBounds(200, 400, 100, 50);
+        this.query.setBounds(20, 400, 100, 50);
         this.query.setText("Query Tables");
-        this.query.addActionListener(new QueryTables());
+        this.query.addActionListener
+        (
+            e -> 
+            {
+                this.setVisible(false);
+                Main.second.setVisible(true);
+            }
+        );
 
-        this.exit.setBounds(200, 500, 100, 50);
+        this.exit.setBounds(20, 500, 100, 50);
         this.exit.setText("Exit");
         this.exit.addActionListener(e -> {System.exit(0);});
     }
 
     private void scriptSetup(String name)
     {
+        String send = "Running...";
+        send += "\nButtons have been disabled";
+
+        this.create.setEnabled(false);
+        this.delete.setEnabled(false);
+        this.populate.setEnabled(false);
+        this.query.setEnabled(false);
+        this.exit.setEnabled(false);
+        JOptionPane.showMessageDialog(null, send);
+
         try
         {
             Connection con = DriverManager.getConnection
@@ -76,17 +110,44 @@ public class FirstFrame extends JFrame
 
             System.out.println("Connection Established");
 
-            ScriptRunner sr = new ScriptRunner(con);
+            int count = 1;
 
-            Reader reader = new BufferedReader
-            (
-                new FileReader
+            if (name != "create")
+            {
+                Statement stmt = con.createStatement();
+
+                ResultSet rs = stmt.executeQuery
                 (
-                    "./sql/" + name + ".sql"
-                )
-            );
+                    "SELECT * FROM information_schema.Tables" + 
+                    " WHERE TABLE_SCHEMA = 'u581004658_Store';"
+                );
 
-            sr.runScript(reader);
+                count = 0;
+
+                while (rs.next())
+                {
+                    count ++;
+                }
+            }
+
+            if (count > 0)
+            {
+                ScriptRunner sr = new ScriptRunner(con);
+
+                Reader reader = new BufferedReader
+                (
+                    new FileReader
+                    (
+                        "./sql/" + name + ".sql"
+                    )
+                );
+    
+                sr.runScript(reader);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Database is empty");
+            }
 
             con.close();
         }
@@ -94,5 +155,16 @@ public class FirstFrame extends JFrame
         { 
             System.out.println(except);
         }
+
+        this.create.setEnabled(true);
+        this.delete.setEnabled(true);
+        this.populate.setEnabled(true);
+        this.query.setEnabled(true);
+        this.exit.setEnabled(true);
+
+        send = "Finished";
+        send += "\nButton have been enabled";
+
+        JOptionPane.showMessageDialog(null, send);
     }
 }

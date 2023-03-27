@@ -1,7 +1,7 @@
 --
 -- Products
 --
-INSERT INTO `Products` (`Title`, `ReleaseDate`, `SalePrice`, `RentalPrice`) VALUES
+INSERT IGNORE INTO `Products` (`Title`, `ReleaseDate`, `SalePrice`, `RentalPrice`) VALUES
 ("300", "2007-03-09", 13.99, 3.99),
 ("Boy's a liar", "2023-02-12", 12.99, 2.99),
 ("Drama", "2018-11-02", 12.99, 2.99),
@@ -26,7 +26,7 @@ INSERT INTO `Products` (`Title`, `ReleaseDate`, `SalePrice`, `RentalPrice`) VALU
 --
 -- Movies
 --
-INSERT INTO `Movies` (`Title`, `ReleaseDate`, `Description`) VALUES
+INSERT IGNORE INTO `Movies` (`Title`, `ReleaseDate`, `Description`) VALUES
 ("300", "2007-03-09", "King Leonidas of Sparta and a force of 300 men fight the Persians at Thermopylae in 480 B.C."),
 ("Dunkirk", "2017-07-21", "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II."),
 ("Forrest Gump", "1994-07-06", "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart."),
@@ -41,7 +41,7 @@ INSERT INTO `Movies` (`Title`, `ReleaseDate`, `Description`) VALUES
 --
 -- Genres
 --
-INSERT INTO `Genres` (`Title`, `ReleaseDate`, `Genre`) VALUES
+INSERT IGNORE INTO `Genres` (`Title`, `ReleaseDate`, `Genre`) VALUES
 ("300", "2007-03-09", "Action"),
 ("300", "2007-03-09", "Drama"),
 ("300", "2007-03-09", "War"),
@@ -75,7 +75,7 @@ INSERT INTO `Genres` (`Title`, `ReleaseDate`, `Genre`) VALUES
 --
 -- ProductionCompanies
 --
-INSERT INTO `ProductionCompanies` (`Title`, `ReleaseDate`, `CompanyName`) VALUES
+INSERT IGNORE INTO `ProductionCompanies` (`Title`, `ReleaseDate`, `CompanyName`) VALUES
 ("300", "2007-03-09", "Atmosphere Entertainment MM"),
 ("300", "2007-03-09", "Cruel and Unusual Films"),
 ("300", "2007-03-09", "Hollywood Gang Productions"),
@@ -114,7 +114,7 @@ INSERT INTO `ProductionCompanies` (`Title`, `ReleaseDate`, `CompanyName`) VALUES
 --
 -- CastAndCrew
 --
-INSERT INTO `CastAndCrew` (`Title`, `ReleaseDate`, `Name`, `Role`) VALUES
+INSERT IGNORE INTO `CastAndCrew` (`Title`, `ReleaseDate`, `Name`, `Role`) VALUES
 ("300", "2007-03-09", "David Wenham", "Starring"),
 ("300", "2007-03-09", "Dominic West", "Starring"),
 ("300", "2007-03-09", "Gerard Butler", "Starring"),
@@ -269,7 +269,7 @@ INSERT INTO `CastAndCrew` (`Title`, `ReleaseDate`, `Name`, `Role`) VALUES
 --
 -- Music
 --
-INSERT INTO `Music` (`Title`, `ReleaseDate`, `Album`) VALUES
+INSERT IGNORE INTO `Music` (`Title`, `ReleaseDate`, `Album`) VALUES
 ("Boy's a liar", "2023-02-12", NULL),
 ("Drama", "2018-11-02", "Volume 1"),
 ("Flight's Booked", "2022-01-07", "Honestly Nevermind"),
@@ -284,7 +284,7 @@ INSERT INTO `Music` (`Title`, `ReleaseDate`, `Album`) VALUES
 --
 -- Labels
 --
-INSERT INTO `Labels` (`Title`, `ReleaseDate`, `LabelName`) VALUES
+INSERT IGNORE INTO `Labels` (`Title`, `ReleaseDate`, `LabelName`) VALUES
 ("Boy's a liar", "2023-02-12", "PLG UK Frontline"),
 ("Drama", "2018-11-02", "Atlantic Records"),
 ("Flight's Booked", "2022-01-07", "Republic Records"),
@@ -299,7 +299,7 @@ INSERT INTO `Labels` (`Title`, `ReleaseDate`, `LabelName`) VALUES
 --
 -- Artists
 --
-INSERT INTO `Artists` (`Title`, `ReleaseDate`, `ArtistName`) VALUES
+INSERT IGNORE INTO `Artists` (`Title`, `ReleaseDate`, `ArtistName`) VALUES
 ("Boy's a liar", "2023-02-12", "Ice Spice"),
 ("Boy's a liar", "2023-02-12", "PinkPantheress"),
 ("Drama", "2018-11-02", "Pink Sweat$"),
@@ -316,7 +316,7 @@ INSERT INTO `Artists` (`Title`, `ReleaseDate`, `ArtistName`) VALUES
 --
 -- Stores
 --
-INSERT INTO `Stores` (`StoreId`, `Phone`, `Email`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`) VALUES
+INSERT IGNORE INTO `Stores` (`StoreId`, `Phone`, `Email`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`) VALUES
 (1, "6475551111", "store1@company-email.com", "15 Bilal Rd", NULL, "Waterloo", "ON", "CA", "N2J 0B1"),
 (2, "6475552222", "store2@company-email.com", "16 Donald Crescent", NULL, "Kitchener", "ON", "CA", "N2J 0B2"),
 (3, "6475553333", "store3@company-email.com", "17 Keeper Rd", NULL, "Cambridge", "ON", "CA", "N2J 0B3"),
@@ -326,7 +326,7 @@ INSERT INTO `Stores` (`StoreId`, `Phone`, `Email`, `StreetName`, `Unit`, `City`,
 --
 -- Suppliers
 --
-INSERT INTO `Suppliers` (`SupplierId`, `SupplierName`, `Phone`, `Email`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`) VALUES
+INSERT IGNORE INTO `Suppliers` (`SupplierId`, `SupplierName`, `Phone`, `Email`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`) VALUES
 (1, "Blockerbuster", "519-555-1111", "customer-service@blockbuster.ca", "15 Ion Dr", NULL, "Waterloo", "ON", "CA", "N2K 1C1"),
 (2, "Equipped", "519-555-2222", "customer-service@equipped.ca", "16 Ion Dr", NULL, "Waterloo", "ON", "CA", "N2K 1C2"),
 (3, "Ultimate Drip", "519-555-3333", "customer-service@ultimatedrip.ca", "17 Ion Dr", NULL, "Waterloo", "ON", "CA", "N2K 1C3"),
@@ -346,7 +346,7 @@ INSERT INTO `Suppliers` (`SupplierId`, `SupplierName`, `Phone`, `Email`, `Street
 --
 -- SuppliesTo
 --
-INSERT INTO `SuppliesTo` (`SupplierId`, `StoreId`) VALUES
+INSERT IGNORE INTO `SuppliesTo` (`SupplierId`, `StoreId`) VALUES
 (1, 1),
 (2, 1),
 (3, 1),
@@ -366,7 +366,7 @@ INSERT INTO `SuppliesTo` (`SupplierId`, `StoreId`) VALUES
 --
 -- Employees
 --
-INSERT INTO `Employees` (`EmployeeId`, `Name`, `Phone`, `Email`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`, `DOB`, `StoreId`) VALUES
+INSERT IGNORE INTO `Employees` (`EmployeeId`, `Name`, `Phone`, `Email`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`, `DOB`, `StoreId`) VALUES
 (1, "Nick Caraway", "905-555-1111", "nickcaraway@company.com", "15 Employee Crescent", NULL, "Waterloo", "ON", "CA", "N2L 2D1", "1925-04-10", 1),
 (2, "Mark Watney", "905-555-2222", "markwatney@company.com", "16 Employee Crescent", NULL, "Waterloo", "ON", "CA", "N2L 2D2", "2011-04-03", 1),
 (3, "Effie Trinket", "905-555-3333", "effietrinket@company.com", "15 Employee Dr", NULL, "Kitchener", "ON", "CA", "N2L 2D3", "2074-02-10", 2),
@@ -381,7 +381,7 @@ INSERT INTO `Employees` (`EmployeeId`, `Name`, `Phone`, `Email`, `StreetName`, `
 --
 -- Inventory
 --
-INSERT INTO `Inventory` (`Copies`, `ProductTitle`, `ProductReleaseDate`, `StoreId`) VALUES
+INSERT IGNORE INTO `Inventory` (`Copies`, `ProductTitle`, `ProductReleaseDate`, `StoreId`) VALUES
 (15, "300", "2007-03-09", 1),
 (15, "300", "2007-03-09", 2),
 (15, "300", "2007-03-09", 3),
@@ -486,7 +486,7 @@ INSERT INTO `Inventory` (`Copies`, `ProductTitle`, `ProductReleaseDate`, `StoreI
 --
 -- Customers
 --
-INSERT INTO `Customers` (`Name`, `Email`, `Phone`, `DOB`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`, `MemberPoints`) VALUES
+INSERT IGNORE INTO `Customers` (`Name`, `Email`, `Phone`, `DOB`, `StreetName`, `Unit`, `City`, `Province`, `Country`, `PostalCode`, `MemberPoints`) VALUES
 ("Anna Clifford", "annaclifford@gmail.com", "416-555-7777", "2002-01-28", "21 Keewatin Ave", NULL, "Waterloo", "ON", "CA", "N2M 3E7", 100),
 ("Christine Sutter", "christinesutter@gmail.com", "416-555-1313", "1966-09-18", "27 Griffin St", NULL, "Waterloo", "ON", "CA", "N2M 4E4", 100),
 ("Corey Wegg", "coreywegg@gmail.com", "416-555-1111", "1974-06-28", "15 Danfield St", NULL, "Waterloo", "ON", "CA", "N2M 3E1", 1000),
@@ -506,7 +506,7 @@ INSERT INTO `Customers` (`Name`, `Email`, `Phone`, `DOB`, `StreetName`, `Unit`, 
 --
 -- Rank
 --
-INSERT INTO `Rank` (`MemberPoints`, `MemberRank`) VALUES
+INSERT IGNORE INTO `Rank` (`MemberPoints`, `MemberRank`) VALUES
 (1000, "Silver"),
 (5000, "Gold"),
 (10000, "Platinum");
@@ -514,7 +514,7 @@ INSERT INTO `Rank` (`MemberPoints`, `MemberRank`) VALUES
 --
 -- TransactionInfo
 --
-INSERT INTO `TransactionInfo` (`SaleId`, `TimeInit`, `TotalPrice`, `PaymentType`, `CustomerEmail`) VALUES
+INSERT IGNORE INTO `TransactionInfo` (`SaleId`, `TimeInit`, `TotalPrice`, `PaymentType`, `CustomerEmail`) VALUES
 (1, "2015-06-28 15:00:00", 19.99, "Cash", "coreywegg@gmail.com"),
 (2, "2018-12-17 13:09:00", 17.99, "Credit", "sydneyking@gmail.com"),
 (3, "2023-01-05 23:59:59", 2.99, "Credit", "coreywegg@gmail.com"),
@@ -523,7 +523,7 @@ INSERT INTO `TransactionInfo` (`SaleId`, `TimeInit`, `TotalPrice`, `PaymentType`
 --
 -- TransactionItems
 --
-INSERT INTO `TransactionItems` (`SaleId`, `ProductTitle`, `ProductReleaseDate`) VALUES
+INSERT IGNORE INTO `TransactionItems` (`SaleId`, `ProductTitle`, `ProductReleaseDate`) VALUES
 (1, "Forrest Gump", "1994-07-06"),
 (2, "The Departed", "2006-10-06"),
 (3, "Price of fame", "2022-01-24"),
@@ -531,13 +531,13 @@ INSERT INTO `TransactionItems` (`SaleId`, `ProductTitle`, `ProductReleaseDate`) 
 
 -- Rentals
 --
-INSERT INTO `Rentals` (`SaleId`, `ProductTitle`, `ProductReleaseDate`, `RentalId`, `Status`, `ReturnDate`, `TimeReturned`) VALUES
+INSERT IGNORE INTO `Rentals` (`SaleId`, `ProductTitle`, `ProductReleaseDate`, `RentalId`, `Status`, `ReturnDate`, `TimeReturned`) VALUES
 (3, "Price of fame", "2022-01-24", 1, "Returned", "2023-01-05 23:59:59", "2023-01-03 13:01:40"),
 (4, "Friends with Benefits", "2018-12-12", 2, "Returned", "2018-08-01 23:59:59", "2018-08-01 13:05:35");
 
 --
 -- Reviews
 --
-INSERT INTO `Reviews` (`ReviewerEmail`, `Comment`, `Rating`, `Title`, `ReleaseDate`) VALUES
+INSERT IGNORE INTO `Reviews` (`ReviewerEmail`, `Comment`, `Rating`, `Title`, `ReleaseDate`) VALUES
 ("coreywegg@gmail.com", "Forrest Gump remains an American staple thanks to Tom Hanks' affecting performance and Robert Zemeckis' ability to canvass history with a galavanting story about patriotic perseverance and optimism.", 5, "Forrest Gump", "1994-07-06"),
 ("sydneyking@gmail.com", "Scorsese turns the clever cat-and-mouse story of two rival informants scrambling to save themselves from discovery, into a star-studded mob opera spiked with grimy underworld detail and juiced with adrenaline and suspicion.", 5, "The departed", "2006-10-06");
