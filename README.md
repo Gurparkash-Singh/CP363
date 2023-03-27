@@ -7,3 +7,5 @@ On a Unix/Linux based system:
 
 On a Windows based system:
     - Use gradlew run
+
+open src/main/java/com/app for code.

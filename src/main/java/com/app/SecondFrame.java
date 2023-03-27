@@ -19,6 +19,7 @@ public class SecondFrame extends JFrame{
     JButton back = new JButton();
 
     JTable view;
+    JScrollPane tableScroll;
 
     JPanel first = new JPanel();
     JPanel second = new JPanel();
@@ -168,9 +169,18 @@ public class SecondFrame extends JFrame{
             second.removeAll();
 
             view = new JTable(data, columns);
-            view.setPreferredScrollableViewportSize(new Dimension(100, 100));
+            view.setPreferredScrollableViewportSize(new Dimension(450, 350));
+            view.setFillsViewportHeight(true);
+            view.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-            second.add(view);
+            tableScroll = new JScrollPane
+            (
+                view,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED
+            );
+            
+            second.add(tableScroll);
             
             con.close();
 
