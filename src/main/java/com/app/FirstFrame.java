@@ -149,6 +149,8 @@ public class FirstFrame extends JFrame
                 JOptionPane.showMessageDialog(null, "Database is empty");
             }
 
+            Main.recreateFrame();
+
             con.close();
         }
         catch(Exception except)

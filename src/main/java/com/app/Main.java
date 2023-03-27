@@ -13,4 +13,10 @@ public class Main
         first.setVisible(true);
     }
 
+    public static void recreateFrame()
+    {
+        second.dispose();
+        second = new SecondFrame();
+    }
+
 }
