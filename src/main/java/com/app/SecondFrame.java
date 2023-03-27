@@ -174,6 +174,9 @@ public class SecondFrame extends JFrame{
             
             con.close();
 
+            second.revalidate();
+            second.repaint();
+            this.revalidate();
             this.repaint();
             System.out.println("Finished");
         }
