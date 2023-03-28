@@ -1,8 +1,6 @@
 package com.app;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,7 +13,7 @@ public class SecondFrame extends JFrame{
     String[][] data;
     ArrayList<String> names = new ArrayList<String>();
 
-    JComboBox tables = new JComboBox<String>();
+    JComboBox<String> tables = new JComboBox<String>();
     JButton back = new JButton();
 
     JTable view;
@@ -56,7 +54,7 @@ public class SecondFrame extends JFrame{
         tables.addActionListener
         (
             (e) -> {
-                JComboBox<String> box = (JComboBox<String>) e.getSource();
+                JComboBox<?> box = (JComboBox<?>) e.getSource();
                 String value = (String) box.getSelectedItem();
                 createTable(value);
             }
