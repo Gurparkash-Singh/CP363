@@ -5,12 +5,15 @@ plugins
     id "application"
 }
 
-application {
+application
+{
     mainClass.set('com.app.Main')
 }
 
-jar {
-  manifest {
+jar
+{
+  manifest
+  {
     attributes 'Main-Class': application.mainClass
   }
 }
